@@ -3,7 +3,7 @@
 
 #include "Macros.h"
 #include "Settings.h"
-#include "Dependencies\json.hpp"
+#include "Dependencies/json.hpp"
 #include <iostream>
 #include <fstream>
 

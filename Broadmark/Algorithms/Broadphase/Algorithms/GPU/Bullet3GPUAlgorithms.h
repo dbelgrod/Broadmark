@@ -4,9 +4,9 @@
 #pragma once
 
 #include "Configs.h"
-#include "Broadphase\Algorithms\BaseAlgorithm.h"
-#include "Broadphase\Object.h"
-#include "Broadphase\OverlapChaches\SimpleCache.h"
+#include "Broadphase/Algorithms/BaseAlgorithm.h"
+#include "Broadphase/Object.h"
+#include "Broadphase/OverlapChaches/SimpleCache.h"
 
 
 #if USE_GPU
@@ -35,9 +35,9 @@ public:
 
 
 
-#include "Bullet3OpenCL\BroadphaseCollision\b3GpuGridBroadphase.h"
-#include "Bullet3OpenCL\BroadphaseCollision\b3GpuParallelLinearBvhBroadphase.h"
-#include "Bullet3OpenCL\BroadphaseCollision\b3GpuSapBroadphase.h"
+#include "Bullet3OpenCL/BroadphaseCollision/b3GpuGridBroadphase.h"
+#include "Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvhBroadphase.h"
+#include "Bullet3OpenCL/BroadphaseCollision/b3GpuSapBroadphase.h"
 
 
 class GPU_Grid : public Bullet3GPUAlgorithm {
@@ -61,7 +61,7 @@ public:
 };
 
 #else
-#include "Broadphase\Algorithms\Misc\None.h"
+#include "Broadphase/Algorithms/Misc/None.h"
 
 class GPU_Grid : public None {};
 class GPU_LBVH : public None {};

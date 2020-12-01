@@ -2,7 +2,7 @@
 
 
 
-#include "Dependencies\doctest.h"
+#include "Dependencies/doctest.h"
 #include <type_traits> // for static_assert
 #include <string>
 

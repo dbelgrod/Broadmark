@@ -12,9 +12,9 @@
 #if USE_CGAL
 #undef min
 #undef max
-#include "CGAL\Box_intersection_d\Box_with_handle_d.h"
-#include "CGAL\box_intersection_d.h"
-#include "CGAL\Bbox_3.h"
+#include "CGAL/Box_intersection_d/Box_with_handle_d.h"
+#include "CGAL/box_intersection_d.h"
+#include "CGAL/Bbox_3.h"
 
 
 

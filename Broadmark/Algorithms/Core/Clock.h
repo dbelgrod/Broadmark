@@ -50,6 +50,7 @@ public:
 		const struct timespec reference = m_reference;
 		clock_gettime(CLOCK_REALTIME, &m_reference);
 		const double timeInSeconds = (double)((m_reference.tv_sec - reference.tv_sec) / (double)m_freq.tv_sec);
+		#endif
 		return timeInSeconds > 0.000001f ? timeInSeconds : 0;
 	}
 };

@@ -83,6 +83,9 @@ public:
 	}
 
 	// Fetches one object from the SoA array
+	#ifndef _WIN32
+	#define __forceinline __attribute__((always_inline))
+	#endif
 	__forceinline SimdObject LoadObject(const size_t i) {
 		return {
 			FloatToSIMD(m_min[0][i]),

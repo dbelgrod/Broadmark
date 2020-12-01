@@ -20,7 +20,11 @@
 #define DEBUG_INFO "File: " __FILE__ ", Line: " STRINGIZE(__LINE__)
 
 // Make something 16 bytes aligned
+#if defined(WIN32) || defined(_WIN32)
 #define StructAlignment(a) __declspec(align(a))
+#else
+#define StructAlignment(a)
+#endif
 
 
 #include "Core/Assertions.h"

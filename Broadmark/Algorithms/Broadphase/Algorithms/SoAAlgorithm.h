@@ -11,7 +11,9 @@
 #include <type_traits>
 #include <array>
 
-
+#ifndef _WIN32
+#define _aligned_free(ptr) free(ptr)
+#endif 
 
 // Extension of the 'BaseAlgorithm' class that maintains a Structure-of-Arrays (SoA)
 // storage of objects AABBs. This class is useful for implementing SIMD based algorithms

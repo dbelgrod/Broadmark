@@ -21,6 +21,10 @@ int gNumAlignedFree = 0;
 int gTotalBytesAlignedAllocs = 0;  //detect memory leaks
 #endif                             //BT_DEBUG_MEMORY_ALLOCATIONST_DEBUG_ALLOCATIONS
 
+#ifndef _WIN32
+#define _aligned_free(ptr) free(ptr)
+#endif 
+
 static void *btAllocDefault(size_t size)
 {
 	return malloc(size);

@@ -5,6 +5,9 @@
 #include "Macros.h"
 #include <memory>
 
+#ifndef _WIN32
+#define _aligned_free(ptr) free(ptr)
+#endif 
 
 // Straight forward Stack implementation
 template<typename T>

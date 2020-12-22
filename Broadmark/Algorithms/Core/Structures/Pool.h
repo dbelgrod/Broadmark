@@ -12,6 +12,10 @@
 #define TEMPLATE_DEFINITION template <typename T>
 typedef size_t PoolHandle;
 
+#ifndef _WIN32
+#define _aligned_free(ptr) free(ptr)
+#endif 
+
 TEMPLATE_DEFINITION
 struct PoolIsland {
 	T m_data;

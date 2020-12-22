@@ -2,6 +2,9 @@
 
 #include "KD.h"
 
+#ifndef _WIN32
+#define _aligned_free(ptr) free(ptr)
+#endif 
 
 KD::~KD() {
 	_aligned_free(m_objectsArray);

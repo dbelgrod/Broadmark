@@ -15,7 +15,9 @@
 #include <stack>
 
 
-
+#ifndef _WIN32
+#define _aligned_free(ptr) free(ptr)
+#endif 
 
 class KD : public BaseAlgorithm<KD_Object, SimpleCache> {
 public:

@@ -6,11 +6,11 @@
 
 #if USE_GPU
 #pragma comment(lib, "OpenCL.lib")
-#include "Bullet3OpenCL\Initialize\b3OpenCLInclude.h"
-#include "Bullet3OpenCL\Initialize\b3OpenCLUtils.h"
-#include "Bullet3OpenCL\BroadphaseCollision\b3GpuBroadphaseInterface.h"
+#include "Bullet3OpenCL/Initialize/b3OpenCLInclude.h"
+#include "Bullet3OpenCL/Initialize/b3OpenCLUtils.h"
+#include "Bullet3OpenCL/BroadphaseCollision/b3GpuBroadphaseInterface.h"
 
-#include "Bullet3OpenCL\BroadphaseCollision\b3GpuSapBroadphase.h"
+#include "Bullet3OpenCL/BroadphaseCollision/b3GpuSapBroadphase.h"
 
 class b3AlignedObjectb3Int4Array : public b3AlignedObjectArray<b3Int4> {};
 

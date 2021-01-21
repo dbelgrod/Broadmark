@@ -1,10 +1,10 @@
 
 
-#include "Core\Algorithms.h"
-#include "Core\Assertions.h"
-#include "Core\Clock.h"
-#include "Core\Scene.h"
-#include "Core\Settings.h"
+#include "Core/Algorithms.h"
+#include "Core/Assertions.h"
+#include "Core/Clock.h"
+#include "Core/Scene.h"
+#include "Core/Settings.h"
 #include <iostream>
 #include <iomanip>
 

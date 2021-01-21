@@ -2,7 +2,7 @@
 
 
 #include "DBVT.h"
-#include "Dependencies\Bullet3\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.h"
+#include "Dependencies/Bullet3/Bullet3Collision/BroadPhaseCollision/b3DynamicBvhBroadphase.h"
 
 
 

@@ -5,7 +5,7 @@
 #undef fabs
 #include "Dependencies/doctest.h"
 
-#include "Core\Settings.h"
+#include "Core/Settings.h"
 #include <iostream>
 #include <string>
 

@@ -4,7 +4,7 @@
 
 
 //#define DOCTEST_CONFIG_IMPLEMENT
-#include "Dependencies\doctest.h"
+#include "Dependencies/doctest.h"
 
 
 void assertionHandler(const doctest::AssertData& ad) {

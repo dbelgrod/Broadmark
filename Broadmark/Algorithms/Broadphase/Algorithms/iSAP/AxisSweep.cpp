@@ -2,8 +2,8 @@
 
 
 #include "AxisSweep.h"
-#include "Dependencies\Bullet2\btBroadphaseProxy.h"
-#include "Dependencies\Bullet2\btAxisSweep3.h"
+#include "Dependencies/Bullet2/btBroadphaseProxy.h"
+#include "Dependencies/Bullet2/btAxisSweep3.h"
 
 
 #define Vec3Conv(v) {v[0], v[1], v[2]}

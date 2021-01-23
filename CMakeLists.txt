@@ -21,5 +21,4 @@ file(GLOB SOURCES_DEPENDENCIES
 )
 
 list(APPEND SOURCES_ALGORITHMS ${SOURCE_DEPENDENCIES})
-add_library(libExample ${SOURCES_ALGORITHMS})
-target_link_libraries(libExample ${PROJECT_NAME})
+add_library(Broadmark ${SOURCES_ALGORITHMS})

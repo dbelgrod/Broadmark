@@ -28,9 +28,10 @@ list(APPEND SOURCES_ALGORITHMS ${SOURCE_DEPENDENCIES} )
 
 include_directories(
 "${CMAKE_CURRENT_SOURCE_DIR}/Broadmark/Algorithms"
-"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision"
+# "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Common"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision/BroadPhaseCollision"
 )
 add_library(Broadmark ${SOURCES_ALGORITHMS})
 

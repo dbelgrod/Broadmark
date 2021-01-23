@@ -8,6 +8,10 @@ project(Broadmark
 set(BROADMARK_ALGORITHMS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Broadmark/Algorithms/Broadphase/Algorithms")
 set(BROADMARK_DEPENDENCIES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Broadmark/Algorithms/Dependencies")
 
+# file(GLOB SOURCES 
+# "${CMAKE_CURRENT_SOURCE_DIR}/Broadmark/Algorithms/*.h*"
+# )
+
 file(GLOB SOURCES_ALGORITHMS
 "${BROADMARK_ALGORITHMS_DIR}/DBVT/*.cpp"
 "${BROADMARK_ALGORITHMS_DIR}/DBVT/*.h*"
@@ -20,5 +24,19 @@ file(GLOB SOURCES_DEPENDENCIES
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Common/*.h*"
 )
 
-list(APPEND SOURCES_ALGORITHMS ${SOURCE_DEPENDENCIES})
+list(APPEND SOURCES_ALGORITHMS ${SOURCE_DEPENDENCIES} )
+
+include_directories(
+"${CMAKE_CURRENT_SOURCE_DIR}/Broadmark/Algorithms"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Common"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3"
+)
 add_library(Broadmark ${SOURCES_ALGORITHMS})
+
+################################################################################
+# Compiler options
+################################################################################
+
+# Use C++17
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)

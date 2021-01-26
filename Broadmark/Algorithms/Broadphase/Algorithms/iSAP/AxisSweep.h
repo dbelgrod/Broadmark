@@ -15,10 +15,10 @@ class btBroadphaseProxy;
 
 class AxisSweep : public BaseAlgorithm<Object, NullCache> {
 protected:
-	bt32BitAxisSweep3 *m_broadphase = nullptr;
 	btBroadphaseProxy **m_proxies = nullptr;
 
 public:
+	bt32BitAxisSweep3 *m_broadphase = nullptr;
 	virtual ~AxisSweep();
 	void Initialize(InflatedSettings settings, const SceneFrame& frameData) override;
 	void UpdateObjects(const SceneFrame& frameData) override;

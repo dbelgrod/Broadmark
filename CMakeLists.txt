@@ -17,6 +17,8 @@ file(GLOB SOURCES_ALGORITHMS
 "${BROADMARK_ALGORITHMS_DIR}/DBVT/*.h*"
 "${BROADMARK_ALGORITHMS_DIR}/iSAP/*.h*"
 "${BROADMARK_ALGORITHMS_DIR}/iSAP/*.cpp"
+"${BROADMARK_ALGORITHMS_DIR}/KD/*.h*"
+"${BROADMARK_ALGORITHMS_DIR}/KD/*.cpp"
 )
 
 file(GLOB SOURCES_DEPENDENCIES
@@ -47,3 +49,6 @@ add_library(Broadmark ${SOURCES_ALGORITHMS})
 
 # Use C++17
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
+
+# Add avx support
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")

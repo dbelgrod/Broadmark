@@ -15,10 +15,10 @@ class b3DynamicBvhBroadphase;
 #define Vec3Conv(v) {v[0], v[1], v[2]}
 class DBVT : public BaseAlgorithm<Object, NullCache> {
 protected:
-	b3DynamicBvhBroadphase *m_broadphase = nullptr;
 	bool m_deferred;
 
 public:
+	b3DynamicBvhBroadphase *m_broadphase = nullptr;
 	DBVT(bool deferred);
 	virtual ~DBVT();
 

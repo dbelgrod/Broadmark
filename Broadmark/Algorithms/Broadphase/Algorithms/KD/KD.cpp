@@ -6,6 +6,10 @@
 #define _aligned_free(ptr) free(ptr)
 #endif 
 
+#ifndef _WIN32
+#define _aligned_malloc(x,y) aligned_alloc(y,x)
+#endif
+
 KD::~KD() {
 	_aligned_free(m_objectsArray);
 	_aligned_free(m_buffer);

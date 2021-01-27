@@ -32,8 +32,8 @@ file(GLOB SOURCES_DEPENDENCIES
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/*.h*"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet2/LinearMath/*.cpp"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/LinearMath/*.h*"
-"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/BroadPhaseCollision/*.cpp"
-"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/BroadPhaseCollision/*.h*"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/BroadphaseCollision/*.cpp"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/BroadphaseCollision/*.h*"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/Initialize/*.cpp"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/Initialize/*.h*"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/ParallelPrimitives/*.cpp"
@@ -47,8 +47,8 @@ include_directories(
 # "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Common"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3"
-"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision/BroadPhaseCollision"
-"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL"
+# "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision/BroadPhaseCollision"
+# "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL"
 )
 add_library(Broadmark ${SOURCES_ALGORITHMS})
 

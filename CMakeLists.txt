@@ -48,6 +48,7 @@ include_directories(
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Common"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3Collision/BroadPhaseCollision"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL"
 )
 add_library(Broadmark ${SOURCES_ALGORITHMS})
 

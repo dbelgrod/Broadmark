@@ -32,8 +32,12 @@ file(GLOB SOURCES_DEPENDENCIES
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/*.h*"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet2/LinearMath/*.cpp"
 "${BROADMARK_DEPENDENCIES_DIR}/Bullet3/LinearMath/*.h*"
-"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/*.cpp"
-"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/*.h*"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/BroadPhaseCollision/*.cpp"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/BroadPhaseCollision/*.h*"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/Initialize/*.cpp"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/Initialize/*.h*"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/ParallelPrimitives/*.cpp"
+"${BROADMARK_DEPENDENCIES_DIR}/Bullet3/Bullet3OpenCL/ParallelPrimitives/*.h*"
 )
 
 list(APPEND SOURCES_ALGORITHMS ${SOURCES_DEPENDENCIES} )

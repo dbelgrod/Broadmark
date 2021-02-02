@@ -32,7 +32,7 @@ cl_kernel m_sap2Kernel;
 
 //int maxPairsPerBody = 64;
 // int maxBodiesPerCell = 256;//??
-int maxBodiesPerCell = Settings::m_GPUGrid_maxBodiesPerCell;	
+int maxBodiesPerCell = Settings().m_GPUGrid_maxBodiesPerCell;	
 
 b3GpuGridBroadphase::b3GpuGridBroadphase(cl_context ctx,cl_device_id device, cl_command_queue  q )
 :m_context(ctx),

@@ -23,6 +23,7 @@ public:
 	int m_Tracy_ObjectsPerCell = 200;
 	int m_GPUSap_KernelType = 5;
 	int m_KD_ObjectsPerLeaf = 512;
+	int m_GPUGrid_maxBodiesPerCell = 256*100;
 
 	Settings() = default;
 	void Validate() {

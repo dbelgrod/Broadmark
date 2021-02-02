@@ -30,24 +30,24 @@ public:
 			int results[w];
 
 			for (size_t i = ranges[tid]; i < ranges[tid + 1]; i += w) {
-				const SimdObject& a = {
+				const SimdObject& a = {{
 					FloatToSIMD(this->m_min[0][i]),
 					FloatToSIMD(this->m_min[1][i]),
 					FloatToSIMD(this->m_min[2][i]),
 					FloatToSIMD(this->m_max[0][i]),
 					FloatToSIMD(this->m_max[1][i]),
 					FloatToSIMD(this->m_max[2][i])
-				};
+				}};
 
 				for (size_t j = i + 1; j < this->m_settings.m_numberOfObjects; j++) {
-					const SimdObject& b = {
+					const SimdObject& b = {{
 						FloatToSIMD(this->m_min[0][j]),
 						FloatToSIMD(this->m_min[1][j]),
 						FloatToSIMD(this->m_min[2][j]),
 						FloatToSIMD(this->m_max[0][j]),
 						FloatToSIMD(this->m_max[1][j]),
 						FloatToSIMD(this->m_max[2][j])
-					};
+					}};
 
 					if (Aabb::Test(a, b, results)) {
 						//const size_t mask = min(w, this->m_settings.m_numberOfObjects - j);

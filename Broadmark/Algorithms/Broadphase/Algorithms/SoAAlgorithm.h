@@ -15,6 +15,10 @@
 #define _aligned_free(ptr) free(ptr)
 #endif 
 
+#ifndef _WIN32
+#define _aligned_malloc(x,y) aligned_alloc(y,x)
+#endif
+
 // Extension of the 'BaseAlgorithm' class that maintains a Structure-of-Arrays (SoA)
 // storage of objects AABBs. This class is useful for implementing SIMD based algorithms
 // As for 'BaseAlgorithm', the 'Object' and 'PairCache' classes are template arguments

@@ -19,6 +19,10 @@
 #define _aligned_free(ptr) free(ptr)
 #endif 
 
+#ifndef _WIN32
+#define _aligned_malloc(x,y) aligned_alloc(y,x)
+#endif
+
 class KD : public BaseAlgorithm<KD_Object, SimpleCache> {
 public:
 	MemoryPool<KD_Node> m_nodePool;

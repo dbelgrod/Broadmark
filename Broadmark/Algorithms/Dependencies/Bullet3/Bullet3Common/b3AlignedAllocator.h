@@ -20,6 +20,10 @@ subject to the following restrictions:
 #define _aligned_free(ptr) free(ptr)
 #endif 
 
+#ifndef _WIN32
+#define _aligned_malloc(x,y) aligned_alloc(y,x)
+#endif
+
 ///we probably replace this with our own aligned memory allocator
 ///so we replace _aligned_malloc and _aligned_free with our own
 ///that is better portable and more predictable

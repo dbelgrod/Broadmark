@@ -13,6 +13,7 @@
 #include "Bullet3OpenCL/Initialize/b3OpenCLUtils.h"
 #include "Bullet3OpenCL/ParallelPrimitives/b3LauncherCL.h"
 
+#include "Core/Settings.h"
 
 
 #define B3_BROADPHASE_SAP_PATH "Dependencies/Bullet3OpenCL/BroadphaseCollision/kernels/sap.cl"
@@ -30,7 +31,8 @@ cl_kernel m_sap2Kernel;
 
 
 //int maxPairsPerBody = 64;
-int maxBodiesPerCell = 256;//??
+// int maxBodiesPerCell = 256;//??
+int maxBodiesPerCell = Settings().m_GPUGrid_maxBodiesPerCell;	
 
 b3GpuGridBroadphase::b3GpuGridBroadphase(cl_context ctx,cl_device_id device, cl_command_queue  q )
 :m_context(ctx),

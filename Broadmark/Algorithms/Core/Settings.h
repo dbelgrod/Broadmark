@@ -24,6 +24,9 @@ public:
 	int m_GPUSap_KernelType = 5;
 	int m_KD_ObjectsPerLeaf = 512;
 	int m_GPUGrid_maxBodiesPerCell = 256*100;
+	int m_vertices = 0;
+	int m_edges = 0;
+	int m_faces = 0;
 
 	Settings() = default;
 	void Validate() {

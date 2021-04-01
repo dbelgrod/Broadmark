@@ -65,8 +65,13 @@ void Bullet3GPUAlgorithm::Initialize(InflatedSettings settings, const SceneFrame
 
 	for (size_t i = 0; i < m_settings.m_numberOfObjects; i++) {
 		const Aabb& aabb = frameData.m_aabbs[i];
-
-		m_algorithm->createProxy(Vec3Conv(aabb.m_min), Vec3Conv(aabb.m_max), i, 1, 1);
+		//b3Printf("V:%i E:%i F:%i", m_settings.m_vertices , m_settings.m_edges, m_settings.m_faces );
+		if (i < m_settings.m_vertices) //vertex
+			m_algorithm->createProxy(Vec3Conv(aabb.m_min), Vec3Conv(aabb.m_max), i, 1, 4);
+		else if (i >= m_settings.m_vertices && i< m_settings.m_vertices + m_settings.m_edges) //edge
+			m_algorithm->createProxy(Vec3Conv(aabb.m_min), Vec3Conv(aabb.m_max), i, 2, 2);
+		else 
+			m_algorithm->createProxy(Vec3Conv(aabb.m_min), Vec3Conv(aabb.m_max), i, 4, 1); //face
 	}
 }
 void Bullet3GPUAlgorithm::UpdateObjects(const SceneFrame& frameData) {
@@ -82,6 +87,23 @@ void Bullet3GPUAlgorithm::UpdateObjects(const SceneFrame& frameData) {
 		m_algorithm->getAllAabbsCPU()[i].m_maxVec = Vec3Conv(aabb.m_max);
 		m_algorithm->getAllAabbsCPU()[i].m_minIndices[3] = i;
 		m_algorithm->getAllAabbsCPU()[i].m_signedMaxIndices[3] = i;
+		if (i < m_settings.m_vertices)
+		{
+			m_algorithm->getAllAabbsCPU()[i].m_collisionFilterGroup = 1;
+			m_algorithm->getAllAabbsCPU()[i].m_collisionFilterMask = 4;
+		}
+		else if (i >= m_settings.m_vertices && i< m_settings.m_vertices + m_settings.m_edges)
+		{
+			m_algorithm->getAllAabbsCPU()[i].m_collisionFilterGroup = 2;
+			m_algorithm->getAllAabbsCPU()[i].m_collisionFilterMask = 2;
+		}
+		else 
+		{
+			m_algorithm->getAllAabbsCPU()[i].m_collisionFilterGroup = 4;
+			m_algorithm->getAllAabbsCPU()[i].m_collisionFilterMask = 1;
+		}
+		
+
 	}
 }
 void Bullet3GPUAlgorithm::UpdateStructures() {
@@ -91,6 +113,7 @@ void Bullet3GPUAlgorithm::UpdateStructures() {
 
 	m_algorithm->writeAabbsToGpu();
 }
+
 void Bullet3GPUAlgorithm::SearchOverlaps() {
 	if (!initialized) {
 		return;

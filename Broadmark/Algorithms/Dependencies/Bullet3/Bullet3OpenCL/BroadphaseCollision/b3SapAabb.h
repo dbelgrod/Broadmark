@@ -16,6 +16,9 @@
 typedef struct b3Aabb b3Aabb_t;
 
 struct b3Aabb {
+	short m_collisionFilterGroup = 1;
+	short m_collisionFilterMask = 1;
+	
 	union {
 		float m_min[4];
 		b3Float4 m_minVec;

@@ -36,6 +36,9 @@ void b3GpuParallelLinearBvhBroadphase::createProxy(const b3Vector3& aabbMin, con
 	b3SapAabb aabb;
 	aabb.m_minVec = aabbMin;
 	aabb.m_maxVec = aabbMax;
+
+	aabb.m_collisionFilterGroup = (short)collisionFilterGroup;
+	aabb.m_collisionFilterMask = (short)collisionFilterMask;
 	
 	aabb.m_minIndices[3] = userPtr;
 	aabb.m_signedMaxIndices[3] = newAabbIndex;
@@ -52,6 +55,9 @@ void b3GpuParallelLinearBvhBroadphase::createLargeProxy(const b3Vector3& aabbMin
 	aabb.m_minVec = aabbMin;
 	aabb.m_maxVec = aabbMax;
 	
+	aabb.m_collisionFilterGroup = (short)collisionFilterGroup;
+	aabb.m_collisionFilterMask = (short)collisionFilterMask;
+
 	aabb.m_minIndices[3] = userPtr;
 	aabb.m_signedMaxIndices[3] = newAabbIndex;
 	

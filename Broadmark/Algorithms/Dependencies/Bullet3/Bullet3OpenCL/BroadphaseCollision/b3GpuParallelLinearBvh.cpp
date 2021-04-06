@@ -1,4 +1,5 @@
 #include "Configs.h"
+#include <iostream>
 
 #if USE_GPU
 
@@ -299,10 +300,11 @@ void b3GpuParallelLinearBvh::calculateOverlappingPairs(b3OpenCLArray<b3Int4>& ou
 	int maxPairs = out_overlappingPairs.size();
 	b3OpenCLArray<int>& numPairsGpu = m_temp;
 	
+	
 	int reset = 0;
 	numPairsGpu.copyFromHostPointer(&reset, 1);
 	
-	//
+	
 	if( m_leafNodeAabbs.size() > 1 )
 	{
 		B3_PROFILE("PLBVH small-small AABB test");
@@ -322,7 +324,7 @@ void b3GpuParallelLinearBvh::calculateOverlappingPairs(b3OpenCLArray<b3Int4>& ou
 			b3BufferInfoCL( numPairsGpu.getBufferCL() ),
 			b3BufferInfoCL( out_overlappingPairs.getBufferCL() )
 		};
-		
+		b3Printf("numPairs: %i\n", numPairsGpu.at(0));
 		b3LauncherCL launcher(m_queue, m_plbvhCalculateOverlappingPairsKernel, "m_plbvhCalculateOverlappingPairsKernel");
 		launcher.setBuffers( bufferInfo, sizeof(bufferInfo)/sizeof(b3BufferInfoCL) );
 		launcher.setConst(maxPairs);
@@ -331,7 +333,7 @@ void b3GpuParallelLinearBvh::calculateOverlappingPairs(b3OpenCLArray<b3Int4>& ou
 		launcher.launch1D(numQueryAabbs);
 		clFinish(m_queue);
 	}
-	
+	b3Printf("numPairs: %i\n", numPairsGpu.at(0));
 	int numLargeAabbRigids = m_largeAabbs.size();
 	if( numLargeAabbRigids > 0 && m_leafNodeAabbs.size() > 0 )
 	{
@@ -358,10 +360,44 @@ void b3GpuParallelLinearBvh::calculateOverlappingPairs(b3OpenCLArray<b3Int4>& ou
 		clFinish(m_queue);
 	}
 	
-	
+
 	//
 	int numPairs = -1;
 	numPairsGpu.copyToHostPointer(&numPairs, 1);
+	
+	if(numPairs > maxPairs)
+	{
+		b3Printf("Trying again... %i > %i", numPairs, maxPairs);
+		maxPairs = numPairs;
+		numPairsGpu.copyFromHostPointer(&reset, 1);
+		out_overlappingPairs.resize(maxPairs);
+		b3Printf("new size: %i\n", out_overlappingPairs.size());
+		int numQueryAabbs = m_leafNodeAabbs.size();
+		
+		b3BufferInfoCL bufferInfo[] = 
+		{
+			b3BufferInfoCL( m_leafNodeAabbs.getBufferCL() ),
+			
+			b3BufferInfoCL( m_rootNodeIndex.getBufferCL() ),
+			b3BufferInfoCL( m_internalNodeChildNodes.getBufferCL() ),
+			b3BufferInfoCL( m_internalNodeAabbs.getBufferCL() ),
+			b3BufferInfoCL( m_internalNodeLeafIndexRanges.getBufferCL() ),
+			b3BufferInfoCL( m_mortonCodesAndAabbIndicies.getBufferCL() ),
+			
+			b3BufferInfoCL( numPairsGpu.getBufferCL() ),
+			b3BufferInfoCL( out_overlappingPairs.getBufferCL() )
+		};
+		b3Printf("numPairs: %i\n", numPairsGpu.at(0));
+		b3LauncherCL launcher(m_queue, m_plbvhCalculateOverlappingPairsKernel, "m_plbvhCalculateOverlappingPairsKernel");
+		launcher.setBuffers( bufferInfo, sizeof(bufferInfo)/sizeof(b3BufferInfoCL) );
+		launcher.setConst(maxPairs);
+		launcher.setConst(numQueryAabbs);
+		
+		launcher.launch1D(numQueryAabbs);
+		clFinish(m_queue);
+	}
+	numPairsGpu.copyToHostPointer(&numPairs, 1);
+
 	if(numPairs > maxPairs)
 	{
 		b3Error("Error running out of pairs: numPairs = %d, maxPairs = %d.\n", numPairs, maxPairs);

@@ -172,7 +172,7 @@ static const char* parallelLinearBvhCL= \
 "	endpoint = (aabb1->m_min.z == aabb2->m_max.z || aabb1->m_min.z == aabb2->m_min.z\n"
 "	|| aabb1->m_max.z == aabb2->m_min.z || aabb1->m_max.z == aabb2->m_max.z) ? endpoint : false;\n"
 "\n"
-"	return overlap && !inside;\n"
+"	return overlap;\n"
 "}\n"
 "//From sap.cl\n"
 "__kernel void plbvhCalculateOverlappingPairs(__global b3AabbCL* rigidAabbs, \n"
